@@ -125,5 +125,14 @@ from sklearn.linear_model import LinearRegression
 model_LR = LinearRegression()
 model_LR.fit(X_train, Y_train)
 Y_pred = model_LR.predict(X_valid)
+#print (Y_pred)
 
 print(mean_absolute_percentage_error(Y_valid, Y_pred))
+
+from catboost import CatBoostRegressor
+from sklearn.metrics import r2_score
+cb_model = CatBoostRegressor ()
+cb_model.fit(X_train, Y_train)
+preds = cb_model.predict(X_valid)
+cb_r2_score = r2_score (Y_valid, preds)
+print (cb_r2_score)
